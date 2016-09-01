@@ -1,5 +1,9 @@
 #!/bin/bash
 
+# run things on a specific day
+# author: JP Viljoen / @froztbyte
+# license: MIT
+
 # default to a sunday if not specified
 RUNDAY=7
 
