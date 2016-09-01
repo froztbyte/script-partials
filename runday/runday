@@ -49,6 +49,6 @@ if [ $# -eq 2 ]; then
 	esac
 fi
 
-if [ $(date +%u) -eq ${RUNDAY} ]; then
+if [ $(/bin/date +%u) -eq ${RUNDAY} ]; then
 	$1
 fi
