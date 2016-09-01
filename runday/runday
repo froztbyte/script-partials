@@ -1,0 +1,50 @@
+#!/bin/bash
+
+# default to a sunday if not specified
+RUNDAY=7
+
+if [ $# -eq 0 ]; then
+	cat <<EOF
+Runday
+
+Syntax: $0 </path/to/run> [runday]
+
+If [runday] is not specified, it is assumed to be Sunday
+
+Valid options for [runday] are:
+
+ * 1-7
+ * Mon, Tue, Wed, Thu, Fri, Sat, Sun
+ * Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday
+ * mon, tue, wed, thu, fri, sat, sun
+ * monday, tuesday, wednesday, thursday, friday, saturday, sunday
+
+EOF
+fi
+
+if [ $# -eq 2 ]; then
+	case $2 in
+		Mon|mon|Monday|monday|1)
+			RUNDAY=1
+			;;
+		Tue|tue|Tuesday|tuesday|2)
+			RUNDAY=2
+			;;
+		Wed|wed|Wednesday|wednesday|3)
+			RUNDAY=3
+			;;
+		Thu|thu|Thursday|thursday|4)
+			RUNDAY=4
+			;;
+		Fri|fri|Friday|friday|5)
+			RUNDAY=5
+			;;
+		Sat|Saturday|sat|6)
+			RUNDAY=6
+			;;
+	esac
+fi
+
+if [ $(date +%u) -eq ${RUNDAY} ]; then
+	$1
+fi
